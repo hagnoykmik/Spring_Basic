@@ -4,21 +4,24 @@ package com.hello.core.order;
 import com.hello.core.discount.DiscountPolicy;
 import com.hello.core.member.Member;
 import com.hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;                                   // 인터클래스(추상클래스)에만 의존
-    private DiscountPolicy discountPolicy;                                             // 인터클래스(추상클래스)에만 의존
+    private final DiscountPolicy discountPolicy;                                             // 인터클래스(추상클래스)에만 의존
 
     // 생성자를 통해서 어떤 구현 객체가 주입될지는 알 수 없다
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+// lombok으로 대체(@RequiredArgsConstructor)
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
