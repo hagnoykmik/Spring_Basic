@@ -5,7 +5,6 @@ public class NetworkClient {
     private String url;
 
     // 생성자
-
     public NetworkClient() {
         // 생성할 때 생성자 호출
         System.out.println("생성자 호출, url = " + url);
